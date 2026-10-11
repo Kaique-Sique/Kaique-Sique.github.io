@@ -3,7 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 
 const DEFAULT_NAV_LINKS = [
-  { label: "About", href: "/about/" },
+  { label: "About", href: "/" },
   { label: "Projects", href: "/projects/" },
   { label: "Skills", href: "/skills/" },
   { label: "Contact", href: "/contact/" },

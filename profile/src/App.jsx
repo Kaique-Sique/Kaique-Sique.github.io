@@ -1,5 +1,7 @@
 import profileImg from "./assets/profileImg.jpg";
 import Navbar from "./components/UI/Navbar";
+import Footer from "./components/UI/Footer";
+import { socialMediaLinks } from "./lib/config";  
 import "./App.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -32,7 +34,7 @@ function App() {
           {/* Social media links */}
           <div className="profilesocial">
             <a
-              href="https://github.com/Kaique-Sique"
+              href={socialMediaLinks.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Kaique Siqueira's GitHub"
@@ -41,7 +43,7 @@ function App() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/kaique-siqueira-99b0b7391/"
+              href={socialMediaLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Kaique Siqueira's LinkedIn"
@@ -51,6 +53,8 @@ function App() {
           </div>
         </div>
       </section>
+  
+      <Footer />
     </>
   );
 }
