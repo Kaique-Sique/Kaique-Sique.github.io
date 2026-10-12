@@ -1,11 +1,15 @@
-import { FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { socialMediaLinks } from "../../lib/config";
+import "./Footer.css";
 
 function Footer() {
-  return (
-    <>
-      <footer>
-        <p>&copy; All rights reserved to Kaique Siqueira</p>
+  const year = new Date().getFullYear();
 
+  return (
+    <footer className="footer">
+      <p>&copy; {year} Kaique Siqueira. All rights reserved.</p>
+
+      <div className="footer-social">
         <a
           href={socialMediaLinks.github}
           target="_blank"
@@ -32,9 +36,8 @@ function Footer() {
         >
           <FaInstagram />
         </a>
-
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 }
 
