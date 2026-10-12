@@ -1,0 +1,132 @@
+/* ========== Technologies carousel ========== */
+.tech-section {
+  --card-w: 150px;
+  --card-gap: 20px;
+  --icon-size: 48px;
+
+  padding: clamp(40px, 6vw, 72px) 0;
+  background-color: var(--code-bg);
+  color: var(--text);
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tech-section h2 {
+  text-align: center;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--text-h);
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+
+  /* Fade effect on the edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+/* Pause on hover */
+.carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+.tech {
+  flex: 0 0 var(--card-w);
+  margin-right: var(--card-gap); /* margin instead of gap: seamless loop */
+  padding: 22px 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background-color: var(--bg);
+  color: var(--text-h);
+  border: none;
+  border-radius: 16px;
+  box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, 0.12));
+
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.25s ease, color 0.25s ease,
+    background-color 0.3s ease;
+}
+
+.tech img {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  object-fit: contain;
+}
+
+.tech:hover {
+  transform: translateY(-4px);
+  color: var(--accent);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .tech-section {
+    --card-w: 120px;
+    --card-gap: 14px;
+    --icon-size: 40px;
+  }
+
+  .tech {
+    padding: 18px 10px;
+    font-size: 0.9rem;
+    border-radius: 14px;
+  }
+}
+
+/* ========== Accessibility: reduced motion ========== */
+@media (prefers-reduced-motion: reduce) {
+  .carousel {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .carousel-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--card-gap);
+    padding: 0 20px;
+  }
+
+  /* Hide the duplicate copy that exists only for the loop */
+  .tech[aria-hidden="true"] {
+    display: none;
+  }
+}
