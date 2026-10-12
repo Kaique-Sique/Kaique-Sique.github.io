@@ -5,6 +5,7 @@ import Footer from "./components/UI/Footer";
 import { socialMediaLinks } from "./lib/config";
 import "./App.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import TechCarousel from "./components/technologies/TechCarousel";
 
 const technologies = [
   { name: "HTML5", icon: "html5", color: "E34F26" },
@@ -65,32 +66,6 @@ function App() {
         </div>
       </section>
 
-      <section className="tech-section">
-        <h2>Technologies</h2>
-
-        <div className="carousel">
-          <div className="carousel-track">
-            {/* The list is rendered twice for the infinite loop effect.
-                The second copy is hidden from screen readers. */}
-            {[0, 1].map((copy) =>
-              technologies.map((tech) => (
-                <div
-                  className="tech"
-                  key={`${copy}-${tech.name}`}
-                  aria-hidden={copy === 1 ? "true" : undefined}
-                >
-                  <img
-                    src={`https://cdn.simpleicons.org/${tech.icon}/${tech.color}`}
-                    alt={copy === 1 ? "" : tech.name}
-                  />
-                  <span>{tech.name}</span>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-      </section>
-
       <section id="about">
         <div className="aboutImg">
           <img src={aboutImg} alt="Kaique Siqueira" />
@@ -124,6 +99,8 @@ function App() {
           </p>
         </div>
       </section>
+
+      <TechCarousel />
 
       <Footer />
     </>
