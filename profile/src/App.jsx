@@ -7,15 +7,6 @@ import "./App.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import TechCarousel from "./components/technologies/TechCarousel";
 
-const technologies = [
-  { name: "HTML5", icon: "html5", color: "E34F26" },
-  { name: "CSS3", icon: "css", color: "1572B6" },
-  { name: "JavaScript", icon: "javascript", color: "F7DF1E" },
-  { name: "React", icon: "react", color: "61DAFB" },
-  { name: "Node.js", icon: "nodedotjs", color: "339933" },
-  { name: "Git", icon: "git", color: "F05032" },
-  { name: "GitHub", icon: "github", color: "8B949E" },
-];
 
 function App() {
   return (
@@ -66,6 +57,8 @@ function App() {
         </div>
       </section>
 
+      <TechCarousel />
+
       <section id="about">
         <div className="aboutImg">
           <img src={aboutImg} alt="Kaique Siqueira" />
@@ -99,8 +92,6 @@ function App() {
           </p>
         </div>
       </section>
-
-      <TechCarousel />
 
       <Footer />
     </>

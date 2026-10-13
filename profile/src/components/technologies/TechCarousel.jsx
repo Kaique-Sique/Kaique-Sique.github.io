@@ -1,14 +1,5 @@
 import "./TechCarousel.css";
-
-const technologies = [
-  { name: "HTML5", icon: "html5", color: "E34F26" },
-  { name: "CSS3", icon: "css3", color: "1572B6" },
-  { name: "JavaScript", icon: "javascript", color: "F7DF1E" },
-  { name: "React", icon: "react", color: "61DAFB" },
-  { name: "Node.js", icon: "nodedotjs", color: "339933" },
-  { name: "Git", icon: "git", color: "F05032" },
-  { name: "GitHub", icon: "github", color: "8B949E" },
-];
+import { technologies } from "./../../lib/config";
 
 function TechCarousel() {
   return (
