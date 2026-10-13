@@ -24,7 +24,7 @@ function Highlights() {
 
   return (
     <section id="highlights">
-      <h2 className="highlights-title">highlights</h2>
+      <h2 className="highlights-title">Highlights</h2>
 
       <div
         className="highlights-carousel"
