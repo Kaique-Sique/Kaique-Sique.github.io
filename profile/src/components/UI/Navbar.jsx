@@ -4,10 +4,18 @@ import "./Navbar.css";
 
 const DEFAULT_NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects/" },
-  { label: "Skills", href: "/skills/" },
-  { label: "Contact", href: "/contact/" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Contact", href: "/#contact" },
 ];
+
+// Lowercase and strip trailing slashes ("/" stays "/")
+const normalize = (s) => s.toLowerCase().replace(/\/+$/, "") || "/";
+
+const readLocation = () =>
+  typeof window === "undefined"
+    ? ""
+    : window.location.pathname + window.location.hash;
 
 export function Navbar({
   links = DEFAULT_NAV_LINKS,
@@ -17,76 +25,52 @@ export function Navbar({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedLink, setSelectedLink] = useState(null);
+  // Stored in state so every navigation event triggers a re-render
+  const [location, setLocation] = useState(readLocation);
 
-  // Determines which link is active based on current browser URL
-  const getActiveFromUrl = () => {
-    if (typeof window === "undefined") return "";
-
-    const path = window.location.pathname.toLowerCase();
-    const hash = window.location.hash.toLowerCase();
-    const cleanPath = path.replace(/\/+$/, "") || "/";
-
-    // 1. Direct path match (e.g., /about/ matches /about/)
-    const directMatch = links.find((link) => {
-      const linkHref = link.href.toLowerCase().replace(/\/+$/, "") || "/";
-      return cleanPath === linkHref;
-    });
-    if (directMatch) return directMatch.href;
-
-    // 2. Specific folder in path (only when not on root "/")
-    if (cleanPath !== "/") {
-      const folderMatch = links.find((link) => {
-        const folder = link.href.toLowerCase().replace(/^\/|\/$/g, "");
-        return folder && cleanPath.split("/").includes(folder);
-      });
-      if (folderMatch) return folderMatch.href;
-    }
-
-    // 3. Hash match (e.g., #projects, #skills)
-    if (hash && hash !== "#" && hash !== "#/") {
-      const cleanHash = hash.replace(/^#\/?/, "");
-      const hashMatch = links.find((link) => {
-        const label = link.label.toLowerCase();
-        const folder = link.href.toLowerCase().replace(/^\/|\/$/g, "");
-        return cleanHash === label || (folder && cleanHash === folder);
-      });
-      if (hashMatch) return hashMatch.href;
-    }
-
-    // If none matches or if path is just "/" with no matching link: do not underline any link
-    return "";
-  };
-
-  // Derive active tab: user click > explicit prop > URL detection
-  const activeTab = selectedLink ?? activeHref ?? getActiveFromUrl();
-
-  // Reset selected link when navigating via browser back/forward buttons
+  // Keep location in sync with back/forward buttons and hash changes
   useEffect(() => {
-    const handleLocationChange = () => {
+    const update = () => {
       setSelectedLink(null);
+      setLocation(readLocation());
     };
 
-    window.addEventListener("popstate", handleLocationChange);
-    window.addEventListener("hashchange", handleLocationChange);
+    window.addEventListener("popstate", update);
+    window.addEventListener("hashchange", update);
     return () => {
-      window.removeEventListener("popstate", handleLocationChange);
-      window.removeEventListener("hashchange", handleLocationChange);
+      window.removeEventListener("popstate", update);
+      window.removeEventListener("hashchange", update);
     };
   }, []);
 
-  // When a link is clicked, update active tab immediately
+  // Determines which link is active based on the current URL
+  const getActiveFromUrl = () => {
+    if (!location) return "";
+
+    const [rawPath, rawHash = ""] = location.split("#");
+    const path = normalize(rawPath);
+    const hash = rawHash.toLowerCase().replace(/\/+$/, "");
+
+    // 1. Hash match first (e.g. /#projects matches "/#projects")
+    if (hash) {
+      const hashMatch = links.find((l) => normalize(l.href) === `/#${hash}`);
+      if (hashMatch) return hashMatch.href;
+    }
+
+    // 2. Exact path match (e.g. "/" or "/about")
+    const directMatch = links.find((l) => normalize(l.href) === path);
+    return directMatch ? directMatch.href : "";
+  };
+
+  // Active tab priority: user click > explicit prop > URL detection
+  const activeTab = selectedLink ?? activeHref ?? getActiveFromUrl();
+
+  const isLinkActive = (link) =>
+    !!activeTab && normalize(activeTab) === normalize(link.href);
+
   const handleLinkClick = (link) => {
     setSelectedLink(link.href);
     setIsMenuOpen(false);
-  };
-
-  const isLinkActive = (link) => {
-    if (!activeTab) return false;
-    const current = activeTab.toLowerCase().replace(/\/+$/, "") || "/";
-    const target = link.href.toLowerCase().replace(/\/+$/, "") || "/";
-    const label = link.label.toLowerCase();
-
-    return current === target || current === label;
   };
 
   return (
@@ -118,6 +102,7 @@ export function Navbar({
           className="nav-toggle"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "close menu" : "open menu"}
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
