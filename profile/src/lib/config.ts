@@ -3,6 +3,17 @@ const AstroRegional = new URL(
   import.meta.url,
 ).href;
 
+const R2D2 = new URL(
+  "../assets/projects/r2-d2.jpeg",
+  import.meta.url,
+).href;
+
+const Scouter = new URL(
+  "../assets/projects/Scouter7563",
+  import.meta.url,
+).href;
+
+
 export const socialMediaLinks = {
   github: "https://github.com/Kaique-Sique",
   linkedin: "https://www.linkedin.com/in/kaique-siqueira-99b0b7391/",
@@ -32,9 +43,26 @@ export const highlights = [
     title: "ASTRO Rebuilt - FRC 7563",
     image: AstroRegional,
     description:
-      "ASTRO Rebuilt is a competitive robot developed by FRC Team MegaZord 7563 for the FIRST Robotics Competition (FRC). Designed to deliver high performance through advanced software, autonomous routines, and integrated sensors and actuators, the robot achieved outstanding results at Brazilian regional competitions. Its accomplishments include winning the Regional Winner title at two Brazilian regionals and earning Autonomous Awards in recognition of its autonomous performance.",
+      "ASTRO Rebuilt is a competitive robot developed by FRC Team MegaZord 7563 for the FIRST Robotics Competition (FRC). Designed to deliver high performance through advanced software, autonomous routines, and integrated sensors and actuators, using navigation algorithms, the robot achieved outstanding results at Brazilian regional competitions. Its accomplishments include winning the Regional Winner title at two Brazilian regionals and earning Autonomous Awards in recognition of its autonomous performance.",
     projectsLink: "/projects",
     projectLink: "/projects/astro-rebuilt",
   },
-  // { id: "...", title: "...", image: ..., description: "...", projectsLink: "/projects", projectLink: "/projects/..." },
+  {
+    id: "r2d2",
+    title: "R2-D2 - OBR Rescue Line",
+    image: R2D2,
+    description:
+      "R2-D2 is a custom-built robot designed for the OBR Rescue Line competition. It uses arduino microcontroler integrated with sensors and actuators to navigate through a challenging course. The robot's design focuses on precision, speed.",
+    projectsLink: "/projects",
+    projectLink: "/projects/r2d2",
+  },
+  {
+    id: "Scouter7563",
+    title: "Scouter7563 - website for Scouting",
+    image: Scouter,
+    description:
+     "Scouter7563 is a web application designed to facilitate the scouting process for FRC Team MegaZord 7563. It allows team members to efficiently collect and analyze data on other teams' robots during competitions, helping to inform strategy and improve performance.",
+    projectsLink: "/projects",
+    projectLink: "projects/scouter7563",
+  }
 ];
