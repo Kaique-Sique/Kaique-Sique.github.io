@@ -1,12 +1,13 @@
 import profileImg from "./assets/profileImg.jpg";
 import aboutImg from "./assets/aboutImg.jpeg";
+import AstroRegional from "./assets/projects/AstroRegional.jpeg";
 import Navbar from "./components/UI/Navbar";
 import Footer from "./components/UI/Footer";
 import { socialMediaLinks } from "./lib/config";
 import "./App.css";
+import Highlights from "./components/highlights/Highlights";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import TechCarousel from "./components/technologies/TechCarousel";
-
 
 function App() {
   return (
@@ -92,7 +93,7 @@ function App() {
           </p>
         </div>
       </section>
-
+      <Highlights />
       <Footer />
     </>
   );
