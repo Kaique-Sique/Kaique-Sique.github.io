@@ -1,20 +1,20 @@
-import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
+import {HashRouter, Route, Routes, Link} from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import Contact from "./pages/contact/Contact.jsx";
 import Projects from "./pages/projects/Projects.jsx";
-import Skils from "./pages/skils/Skils.jsx";
+import Skills from "./pages/skills/Skills.jsx";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/skils" element={<Skils />} />
+          <Route path="/skills" element={<Skills />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
