@@ -92,7 +92,7 @@ function Contact() {
         <div className="contact-intro">
           <h1>Contact</h1>
           <p>
-            Have a project, an FRC software question, or an opportunity to
+            Have a project, an software question, or an opportunity to
             share? Reach out through any of the channels below and I'll get back
             to you.
           </p>
