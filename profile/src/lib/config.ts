@@ -7,6 +7,8 @@ export const socialMediaLinks = {
   github: "https://github.com/Kaique-Sique",
   linkedin: "https://www.linkedin.com/in/kaique-siqueira-99b0b7391/",
   instagram: "https://www.instagram.com/_kaique_dps/",
+  email: "kaiquedpsiqueira@gmail.com",
+  whatsapp: "+55 11996123440",
 };
 
 export const technologies = [
