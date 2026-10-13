@@ -1,3 +1,8 @@
+const AstroRegional = new URL(
+  "../assets/projects/AstroRegional.jpeg",
+  import.meta.url,
+).href;
+
 export const socialMediaLinks = {
   github: "https://github.com/Kaique-Sique",
   linkedin: "https://www.linkedin.com/in/kaique-siqueira-99b0b7391/",
@@ -17,4 +22,17 @@ export const technologies = [
   { name: "Arduino", icon: "arduino", color: "00979D" },
   { name: "Postgresql", icon: "postgresql", color: "336791" },
   { name: "Springboot", icon: "springboot", color: "6DB33F" },
+];
+
+export const highlights = [
+  {
+    id: "astro-rebuilt",
+    title: "ASTRO Rebuilt - FRC 7563",
+    image: AstroRegional,
+    description:
+      "ASTRO Rebuilt is a competitive robot developed by FRC Team MegaZord 7563 for the FIRST Robotics Competition (FRC). Designed to deliver high performance through advanced software, autonomous routines, and integrated sensors and actuators, the robot achieved outstanding results at Brazilian regional competitions. Its accomplishments include winning the Regional Winner title at two Brazilian regionals and earning Autonomous Awards in recognition of its autonomous performance.",
+    projectsLink: "/projects",
+    projectLink: "/projects/astro-rebuilt",
+  },
+  // { id: "...", title: "...", image: ..., description: "...", projectsLink: "/projects", projectLink: "/projects/..." },
 ];
