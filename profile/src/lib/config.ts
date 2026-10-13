@@ -9,7 +9,7 @@ const R2D2 = new URL(
 ).href;
 
 const Scouter = new URL(
-  "../assets/projects/Scouter7563",
+  "../assets/projects/Scouter7563.png",
   import.meta.url,
 ).href;
 
