@@ -77,8 +77,8 @@ function Home() {
           </p>
 
           <p>
-            I am currently studying a high school program specializing in
-            Electrical and Electronics Engineering at SENAI-SP and am a member
+            I am currently studying in a high school program specializing in
+            Electrical and Electronics Engineering at SENAI-SP and a member
             of the FRC Megazord 7563 team, contributing to software development
             for competition robots. Through robotics competitions, I have gained
             experience developing solutions for high-performance systems and had

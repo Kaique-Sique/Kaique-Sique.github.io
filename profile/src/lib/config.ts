@@ -43,7 +43,7 @@ export const highlights = [
     title: "ASTRO Rebuilt - FRC 7563",
     image: AstroRegional,
     description:
-      "ASTRO Rebuilt is a competitive robot developed by FRC Team MegaZord 7563 for the FIRST Robotics Competition (FRC). Designed to deliver high performance through advanced software, autonomous routines, and integrated sensors and actuators, using navigation algorithms, the robot achieved outstanding results at Brazilian regional competitions. Its accomplishments include winning the Regional Winner title at two Brazilian regionals and earning Autonomous Awards in recognition of its autonomous performance.",
+      "ASTRO Rebuilt is a competitive robot developed by FRC Team MegaZord 7563 for the FIRST Robotics Competition (FRC). Designed to deliver high performance through advanced software, autonomous routines. Its accomplishments include winning the Regional Winner title at two Brazilian regionals and earning Autonomous Awards in recognition of its autonomous performance.",
     projectsLink: "/projects",
     projectLink: "/projects/astro-rebuilt",
   },
